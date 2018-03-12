@@ -1,0 +1,87 @@
+$border-radius: 4px;
+$border-color: #ddd;
+.video-card {
+    margin-bottom: 10px;
+    .video {
+        height: 300px;
+        width: 100%;
+        background: black;
+    }
+    .media-container {
+        position: relative;
+        height: auto;
+        z-index: 1;
+        &:hover {
+            .stop-container {
+                display: block !important;
+            }
+        }
+        .media-control {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -40px;
+            margin-left: -40px;
+            text-align: center;
+            z-index: 2;
+            border-radius: 50%;
+            background-color: rgba(0,0,0,0.8);
+            width: 80px;
+            height: 80px;
+            text-align: center;
+            cursor: pointer;
+            .fa {
+                margin-top: 20px;
+                font-size: 40px;
+                color: white;
+            }
+            &.stop-container {
+                display: none;
+            }
+        }
+    }
+    .card-title {
+        width: 100%;
+        padding: 5px 10px;
+        margin: 0;
+        font-size: 0.9em;
+        font-weight: 600;
+        background: linear-gradient(to bottom, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
+        color: #fefefe;
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+    }
+    .video-thumb {
+        height: 300px;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .card-info {
+        position: relative;
+        border: 1px solid $border-color;
+        padding: 5px 10px;
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+        div {
+            padding: 0 0 5px;
+        }
+        .card-icons {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+    }
+    .card-description {
+        font-size: 0.7em;
+    }
+    label {
+        font-style: italic;
+        margin-bottom: 0;
+        font-size: 0.8em;
+    }
+    
+}
