@@ -12,13 +12,17 @@ import { VideoListComponent } from './components/video-list/video-list.component
 import { HeaderComponent } from './components/header/header.component';
 import { VideoDataService } from './services/video-data.service';
 import { VideoCardComponent } from './components/video-card/video-card.component';
+import { AgmCoreModule } from '@agm/core';
+import { MapComponent } from './components/map/map.component';
+import { UserDataService } from './services/user-data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     VideoListComponent,
     HeaderComponent,
-    VideoCardComponent
+    VideoCardComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -27,9 +31,12 @@ import { VideoCardComponent } from './components/video-card/video-card.component
     FormsModule,
     AppRoutingModule,
     MaterialModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAFzBg6EWivP2e2GR0DmXdosJKqJylV9AQ',
+    })
   ],
-  providers: [VideoDataService],
+  providers: [VideoDataService, UserDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
