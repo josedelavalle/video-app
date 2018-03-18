@@ -1,20 +1,32 @@
 
 <div class="wrapper">
+  <div class="container-fluid">
+    <mat-form-field class="search-term-input">
+      <input matInput [(ngModel)]="searchTerm" [value]="searchTerm" (keypress)="searchKeyPress($event)">
+    </mat-form-field>
+    <div class="searchesContainer">
+      <span *ngFor="let item of searches">
+        <span class="searches" [ngClass]="{'active': activeSearch==item}" (click)="setSearch(item)">
+          <i class="fa fa-times-circle" (click)="removePastSearch($event, item)"></i>{{item}}
+        </span>
+      </span>
+    </div>
+  </div>
+
   <div class="container-fluid" *ngIf="videoData">
-      <mat-form-field class="search-term-input">
-          <input matInput [(ngModel)]="searchTerm" [value]="searchTerm">
-      </mat-form-field>
+      
     <div class="text-center">Showing {{videoData.length * pageNum}} of {{totalItems}}</div>
     <div class="text-center">
         <button mat-button (click)="getMoreVideos()">Get More</button>
+        <button mat-button (click)="clearVideos()">Clear All</button>
       </div>
     <div class="row">      
-        <div *ngFor="let item of videoData; trackBy: trackByFn" class="col-xs-12 col-md-6 col-lg-4 col-xl-3">
+        <div *ngFor="let item of videoData" class="col-xs-12 col-md-6 col-lg-4 col-xl-3">
           <app-video-card [item]="item"></app-video-card>
         </div>
     </div>
   </div>
 </div>
 <div class="text-center">
-  <button mat-button (click)="getMoreVideos()">Get More</button>
+  <button mat-button *ngIf="videoData.length > 0" (click)="getMoreVideos()">Get More</button>
 </div>
